@@ -9,7 +9,8 @@ import logging
 from src.log.log_config import setup_logging
 from src.api.route import all_router
 from contextlib import asynccontextmanager
-from src.env import env
+from src.env import get_env
+env = get_env()
 
 setup_logging()
 logger = logging.getLogger(__name__)
