@@ -15,7 +15,15 @@ class Config(BaseSettings):
 
     # *******************************************
 
-    model_config = ConfigDict(case_sensitive = True, extra = "allow", env_file = "/src/env/.env")
+    # ===========================================
+    # Authentication
+    # ===========================================
+
+    BEARER_TOKEN: str
+
+    # *******************************************
+
+    model_config = ConfigDict(case_sensitive = True, extra = "allow", env_file = ".env")
 
 @lru_cache
 def get_env():
