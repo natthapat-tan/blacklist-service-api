@@ -8,6 +8,7 @@ import time
 import logging
 from src.log.log_config import setup_logging
 from src.api.route import all_router
+from src.database import mock_database, redis_database, postgres_database, mongo_database
 from contextlib import asynccontextmanager
 from src.config import get_env
 env = get_env()
