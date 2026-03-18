@@ -16,7 +16,7 @@ class MockConnector:
 
     is_connected: bool = False
 
-    async def connect_to_database(self, path: str):
+    async def connect_to_database(self):
         logger.info("Connecting to Mock Database ...")
         self.is_connected = True
         logger.info("Connected to Mock Database")

@@ -3,19 +3,19 @@ from src.database.postgresdb import PostgresConnector
 from src.database.redisdb import RedisConnector
 from src.database.mockdb import MockConnector
 
-mongodb = MongoConnector()
-postgresdb = PostgresConnector()
-redisdb = RedisConnector()
-mockdb = MockConnector()
+mongo_database = MongoConnector()
+postgres_database = PostgresConnector()
+redis_database = RedisConnector()
+mock_database = MockConnector()
 
-async def mongo_database():
-    return mongodb
+async def get_mongo_database():
+    return mongo_database
 
-async def postgres_database():
-    return postgresdb
+async def get_postgres_database():
+    return postgres_database
 
-async def redis_database():
-    return redisdb
+async def get_redis_database():
+    return redis_database
 
-async def mock_database():
-    return mockdb
+async def get_mock_database():
+    return mock_database
