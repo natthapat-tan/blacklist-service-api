@@ -36,7 +36,6 @@ class MongoConnector:
         documents = []
         async for document in cursor:
             documents.append(document)
-        # pprint.pprint(documents)
         return documents
     
     async def insert_documents(self, query: dict, collection_name: str):

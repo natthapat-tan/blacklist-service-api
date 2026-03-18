@@ -8,7 +8,7 @@ import time
 import logging
 from src.log.log_config import setup_logging
 from src.api.route import all_router
-from src.database import mock_database, postgres_database, mongo_database, redis_database
+from src.database import postgres_database, mongo_database, redis_database
 from contextlib import asynccontextmanager
 from src.config import get_env
 env = get_env()
@@ -27,7 +27,6 @@ async def lifespan(app: FastAPI):
     try:
         
         logger.info("Service start...")
-        await mock_database.connect_to_database()
 
         yield
 
@@ -39,7 +38,6 @@ async def lifespan(app: FastAPI):
 
         logger.info("Service shutdown...")
 
-        await mock_database.close_database_connection()
 
 # *******************************************
 

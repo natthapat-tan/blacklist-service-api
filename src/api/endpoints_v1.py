@@ -3,8 +3,6 @@ from fastapi.requests import Request
 from fastapi import Depends
 from src.api.schemas import BlacklistV1Request, BlacklistV1Response
 from src.api.security import verify_bearer_token
-from src.database import get_mock_database
-from src.database.mockdb import MockConnector
 router = APIRouter()
 
 
@@ -17,21 +15,20 @@ router = APIRouter()
              response_model = BlacklistV1Response)
 async def blacklist(request: Request,
                     request_model: BlacklistV1Request,
-                    auth = Depends(verify_bearer_token),
-                    database: MockConnector = Depends(get_mock_database)):
+                    # auth = Depends(verify_bearer_token)
+):
     
-    status = False
+    # [1] Define Variable
     body = request_model.model_dump(mode = "json")
-    id_card = body["id_number"]
+    id_number = body.get("id_number", None)
+    status = False
+    mock_blacklist_data = ["1111111111111", "3333333333333", "1341486039218"]
 
-    result = await database.fetch_all("")
-
-    for record in result:
-        if record["id_card"] == id_card:
-            status = True
-            break
+    # [2] Check wheter id number from request is in list or not
+    if id_number in mock_blacklist_data:
+        status = True
 
     return BlacklistV1Response(ref_id = request.state.ref_no,
-                               status = status)
+                               blacklist_status = status)
 
 # *******************************************

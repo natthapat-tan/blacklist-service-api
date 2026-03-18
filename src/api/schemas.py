@@ -5,4 +5,4 @@ class BlacklistV1Request(BaseModel):
 
 class BlacklistV1Response(BaseModel):
     ref_id: str
-    status: bool
+    blacklist_status: bool
